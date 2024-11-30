@@ -1,27 +1,23 @@
-
-class Storage {
-
-  constructor(initialItems) {
-    this._items = initialItems; // приватна властивість 
+const images = [
+  {
+    url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'White and Black Long Fur Cat',
+  },
+  {
+    url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+  },
+  {
+    url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Group of Horses Running',
   }
-  getItems() {
-    return this._items;
-  }
+];
 
-  addItem(newItem) {
-    this._items.push(newItem); //  новий товар до масиву
-  }
+const gallery = document.querySelector("ul.gallery");
+let galleryHTML = '';
 
-  removeItem(itemToRemove) {
-    const index = this._items.indexOf(itemToRemove); 
-    if (index !== -1) {
-      this._items.splice(index, 1); // видалення
-    }
-  }
-}
-const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
-storage.addItem("Droid");
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
-storage.removeItem("Prolonger");
-console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+images.forEach(image => {
+  galleryHTML += `<li class="gallery-item"><img src="${image.url}" alt="${image.alt}" class="gallery-img"></li>`;
+});
+
+gallery.insertAdjacentHTML("beforeend", galleryHTML);
